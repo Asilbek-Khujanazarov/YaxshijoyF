@@ -1,0 +1,365 @@
+/* Material Icons uchun */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Google Fonts’dan chiroyli shrift qo‘shamiz */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.sidebar {
+  padding: 20px;
+  width: 100%;
+  height: 100vh; /* To‘liq ekran balandligi */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-color: #f8f9fa; /* Fallback rang */
+  position: relative;
+}
+
+.indicator {
+  position: absolute;
+  left: 280px;
+  top: 40%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.indicator-bar {
+  width: 9px;
+  height: 80px;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.indicator-bar.active {
+  opacity: 1;
+  background-color: white;
+}
+
+.slide-content {
+  top: 600px;
+  right: 40px;;
+  position: relative;
+  color: white;
+  text-align: right;
+}
+
+header {
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  max-width: 50%;
+}
+
+h1 {
+  font-size: 2.5em; /* Original o‘lcham */
+  text-shadow: 2px 2px 4px #000;
+  margin: -450px 0 10px -50px;
+  line-height: 1.2;
+}
+
+.credit-section {
+  position: absolute;
+  bottom: 20px;
+  left: 20%;
+  text-align: left;
+}
+
+.credit-section p {
+  margin: 5px 0;
+  text-shadow: 1px 1px 2px #000;
+  font-size: 0.9em;
+}
+
+.categories-panel {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  scrollbar-width: none;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Gradient fon */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Engil soya */
+  z-index: 10; /* Kategoriyalar oldinga chiqsin */
+}
+
+.categories-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.categories-panel button {
+  padding: 3px 10px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Tugma gradienti */
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif; /* Chiroyli shrift */
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Tugma soyasi */
+  transform: scale(1);
+}
+
+.categories-panel button:hover {
+  background: linear-gradient(145deg, #f0f0f0, #d9d9d9); /* Hover gradienti */
+  transform: scale(1.05); /* Kichik kattalashish */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Hover’da ko‘proq soya */
+}
+
+.categories-panel button.selected {
+  background: linear-gradient(145deg, #007bff, #0056b3); /* Tanlanganda gradient */
+  color: white;
+  transform: scale(1.1); /* Tanlanganda biroz kattalashish */
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Tanlanganda ko‘k soya */
+}
+
+.results-container {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.results-container::-webkit-scrollbar {
+  display: none;
+}
+
+.results-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result-card {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.result-content {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.result-image {
+  width: 200px;
+  height: 180px;
+  flex-shrink: 0;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.result-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.result-header strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-dot {
+  font-size: 14px;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.rating-section .material-icons.star {
+  font-size: 14px;
+  margin-right: 2px;
+}
+
+.rating-section .material-icons.star.filled {
+  color: #f39c12; /* Yellow for filled stars */
+}
+
+.rating-section .material-icons.star:not(.filled) {
+  color: #ccc; /* Gray for unfilled stars */
+}
+
+.rating-section .rating-text {
+  font-size: 14px;
+  color: #444;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.result-details {
+  margin-bottom: 10px;
+}
+
+.result-details p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #444;
+}
+
+.result-details strong {
+  color: #222;
+}
+
+.get-directions-btn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-end;
+  transition: background-color 0.3s ease;
+}
+
+.get-directions-btn:hover {
+  background-color: #c82333;
+}
+
+.no-results {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.company-details-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+.company-details-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive dizayn */
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .indicator {
+    left: 10px;
+  }
+
+  header {
+    left: 20%;
+    top: 20%;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .credit-section {
+    bottom: 10px;
+    left: 20%;
+  }
+
+  .credit-section p {
+    font-size: 0.7em;
+  }
+
+  .categories-panel {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .categories-panel button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .result-card {
+    padding: 12px;
+  }
+
+  .result-content {
+    gap: 10px;
+  }
+
+  .result-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .result-header strong {
+    font-size: 14px;
+  }
+
+  .rating-section .material-icons.star {
+    font-size: 12px;
+  }
+
+  .rating-section .rating-text {
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .result-details p {
+    font-size: 13px;
+  }
+
+  .get-directions-btn {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+}

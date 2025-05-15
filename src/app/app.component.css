@@ -1,0 +1,46 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+app-sidebar.full-width {
+  width: 100%; /* Boshlang‘ich holat yoki kategoriya yo‘q */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+app-sidebar.partial-width {
+  width: 70%; /* Kategoriya yoki company-details faol */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+app-yandex-map {
+  width: 30%;
+  box-sizing: border-box;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+app-yandex-map #map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

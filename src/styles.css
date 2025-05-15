@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: hidden; /* Scroll butunlay o‘chirildi */
+  }
+  
+  app-root {
+    display: block;
+    height: 100vh;
+    overflow-y: hidden; /* Scroll butunlay o‘chirildi */
+  }

@@ -1,0 +1,21 @@
+<div class="header">
+  <h1 class="logo">Pitsa.Uz</h1>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      (keyup.enter)="onSearch()" 
+      placeholder="Qidirish (masalan, pitsa, lavash...)" 
+      class="search-input">
+    <button (click)="onSearch()" class="search-button">🔍</button>
+  </div>
+  <div class="user-section">
+    <ng-container *ngIf="user; else loginButton">
+      <span class="user-email">{{ user.email }}</span>
+      <button class="logout-button" (click)="logout()">Chiqish</button>
+    </ng-container>
+    <ng-template #loginButton>
+      <button class="login-button" (click)="loginWithGoogle()">Kirish</button>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="sidebar" [style.backgroundImage]="(selectedCategory || searchQuery) ? 'none' : 'url(' + currentSlide.image + ')'">
+  <!-- Indikatorlar -->
+  <div class="indicator" *ngIf="!selectedCategory && !searchQuery">
+    <div *ngFor="let slide of slides; let i = index" 
+         class="indicator-bar" 
+         [ngClass]="{'active': i === slideIndex}">
+    </div>
+  </div>
+
+  <!-- Sarlavha va kreditlar -->
+  <div class="slide-content" *ngIf="!selectedCategory && !searchQuery">
+    <header>
+      <h1>{{ currentSlide.title }}</h1>
+    </header>
+    <div class="credit-section">
+      <p>{{ currentSlide.credit }}</p>
+      <p>{{ currentSlide.creditDetail }}</p>
+    </div>
+  </div>
+
+  <!-- Kategoriyalar paneli -->
+  <div class="categories-panel">
+    <button *ngFor="let category of categories" 
+            [class.selected]="selectedCategory === category"
+            (click)="selectCategory(category)">
+      {{ category }}
+    </button>
+  </div>
+
+  <!-- Natijalar -->
+  <div class="results-container" *ngIf="(selectedCategory || searchQuery) && !selectedCompany">
+    <ul class="results-list" *ngIf="searchResults.length > 0; else noResults">
+      <li *ngFor="let item of searchResults" class="result-card" (click)="openCompanyDetails(item)">
+        <div class="result-content">
+          <div class="result-image" *ngIf="getFirstImageUrl(item.companyMetaData?.id) !== '/assets/placeholder-image.jpg'">
+            <img [src]="getFirstImageUrl(item.companyMetaData?.id)" alt="Company Image">
+          </div>
+          <div class="result-info">
+            <div class="result-header">
+              <strong>{{ item.name }}</strong>
+            </div>
+            <div class="rating-section">
+              <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'filled': i <= getFilledStars(item.companyMetaData?.id)}">star</span>
+              <span class="rating-text">{{ getRating(item.companyMetaData?.id).toFixed(1) }} ({{ getReviewCount(item.companyMetaData?.id) }} ta baho)</span>
+            </div>
+            <p class="description">{{ item.description | slice:0:80 }}{{ item.description?.length > 80 ? '...' : '' }}</p>
+            <div class="result-details">
+              <p *ngIf="item.companyMetaData?.hours"><strong></strong> {{ item.companyMetaData.hours || 'N/A' }}</p>
+            </div>
+            <button class="get-directions-btn" (click)="getDirections($event, item)">Get Directions</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ng-template #noResults>
+      <p class="no-results">Hozircha natijalar yo'q.</p>
+    </ng-template>
+  </div>
+
+  <!-- Company Details -->
+  <div class="company-details-wrapper" *ngIf="selectedCompany">
+    <app-company-details [company]="selectedCompany" (close)="closeCompanyDetails()"></app-company-details>
+  </div>
+
+
+</div>

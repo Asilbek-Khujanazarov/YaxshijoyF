@@ -1,0 +1,168 @@
+<div class="company-details">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">
+      <span class="material-icons">arrow_back</span>
+    </button>
+  </div>
+
+  <!-- Info-card bo‘limi -->
+  <div class="info-card">
+    <!-- Rasmlar slayderi -->
+    <div class="image-slider" *ngIf="images?.length; else noImages">
+      <div class="slider-container">
+        <div class="slider-image">
+          <img [src]="'http://localhost:5233' + images[currentImageIndex].imageUrl" alt="Company Image" />
+          <div class="hands-overlay"></div>
+        </div>
+        <div class="slider-background"></div>
+        <!-- Three-dot menu for image actions -->
+        <div class="menu-icon" (click)="toggleMenu()">
+          <span class="material-icons">more_vert</span>
+        </div>
+        <div class="menu-dropdown" *ngIf="isMenuOpen">
+          <div class="menu-item delete" (click)="deleteImage()">Delete Image</div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <div class="progress-bar">
+          <span class="progress-segment" *ngFor="let image of images; let i = index"
+                [ngClass]="{'filled': i <= currentImageIndex}"></span>
+        </div>
+        <label class="camera-icon">
+          <span class="material-icons">photo_camera</span>
+          <input type="file" accept="image/*" (change)="onImageUpload($event)">
+        </label>
+      </div>
+    </div>
+    <ng-template #noImages>
+      <div class="no-images">
+        <span class="material-icons no-image-icon">image_not_supported</span>
+        <p>Hozircha rasmlar yo‘q. Iltimos, kompaniya rasmini yuklang.</p>
+        <label class="camera-icon">
+          <span class="material-icons">photo_camera</span>
+          <input type="file" accept="image/*" (change)="onImageUpload($event)">
+        </label>
+      </div>
+    </ng-template>
+
+    <!-- Kompaniya ma'lumotlari -->
+    <div class="info-details">
+      <!-- Company Name -->
+      <div class="info-row">
+        <span class="material-icons"></span>
+      <h2 class="company-name">{{ company?.name || 'N/A' }}</h2>
+      </div>
+      <!-- Rating -->
+      <div class="rating-section">
+        <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'filled': i <= getFilledStars()}">star</span>
+        <span class="rating-text">{{ companyRating.toFixed(1) }} ({{ reviewCount }} ta baho)</span>
+      </div>
+      <!-- Category -->
+      <div class="info-row">
+        <span class="material-icons"></span>
+        <p>{{ company?.companyMetaData?.categories || 'N/A' }}</p>
+      </div>
+
+  <br>
+      <!-- Description -->
+      <div class="info-row" *ngIf="company?.description">
+        <span class="material-icons"></span>
+        <p>{{ company.description | slice:0:100 }}{{ company.description.length > 100 ? '...' : '' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location & Hours bo‘limi -->
+  <div class="location-section">
+    <!-- <h4></h4> -->
+    <div class="location-content">
+      <div class="map-container">
+        <div #map class="map"></div>
+        <div class="address">
+          <p class="address-title">Located in:</p>
+          <p class="address-text">{{ company?.companyMetaData?.address || company?.fullAddress || 'N/A' }}</p>
+          <button class="directions-btn" (click)="getDirections()">Get Directions</button>
+        </div>
+      </div>
+      <div class="info-details">
+        <div class="info-row">
+          <span class="material-icons">schedule</span>
+          <p>{{ company?.companyMetaData?.hours || 'N/A' }}</p>
+        </div>
+        <div class="info-row" *ngIf="company?.companyMetaData?.url && company.companyMetaData.url !== 'N/A'">
+          <span class="material-icons">link</span>
+          <a [href]="company.companyMetaData.url" target="_blank">{{ company.companyMetaData.url | slice:0:30 }}{{
+            company.companyMetaData.url.length > 30 ? '...' : '' }}</a>
+        </div>
+        <div class="info-row">
+          <span class="material-icons">phone</span>
+          <p>{{ company?.companyMetaData?.phones || 'N/A' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sharh qoldirish formasi -->
+  <div class="review-form">
+    <form (ngSubmit)="submitReview()">
+      <div class="rating">
+        <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'filled': star <= newReview.rating}"
+          (click)="setRating(star)">★</span>
+      </div>
+      <div class="input-container">
+        <textarea #commentTextarea [(ngModel)]="newReview.comment" name="comment" placeholder="Sharh qoldiring..."
+          (input)="adjustTextareaHeight()" required></textarea>
+        <div class="input-actions">
+          <label class="file-upload">
+            <span class="material-icons">attach_file</span>
+            <input type="file" multiple accept="image/*" (change)="onFileChange($event)">
+          </label>
+          <button type="submit" class="submit-btn">
+            <span class="material-icons">arrow_upward</span>
+          </button>
+        </div>
+      </div>
+      <div class="image-preview" *ngIf="newReview.images && newReview.images.length > 0">
+        <span *ngFor="let image of newReview.images; let i = index">
+          {{ image.name }}
+          <span class="remove-image" (click)="removeImage(i)">×</span>
+        </span>
+      </div>
+    </form>
+  </div>
+
+<div class="reviews-section">
+  <h4>Sharhlar</h4>
+  <div *ngIf="reviews?.length; else noReviews" class="reviews-list">
+    <div *ngFor="let review of reviews" class="review-card">
+      <div class="review-header">
+        <div class="user-info">
+          <span class="material-icons avatar">person</span>
+          <span class="user-id">{{ review.userName | maskEmail }}</span>
+          <span class="date">{{ review.createdAt | date:'MMM d, yyyy' }}</span>
+        </div>
+        <div class="rating">
+          <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]"
+            [ngClass]="{'filled': star <= review.rating}">★</span>
+        </div>
+      </div>
+      <p>{{ review.comment }}</p>
+      <div class="review-images" *ngIf="review.imageUrls?.length">
+        <img *ngFor="let imageUrl of review.imageUrls" [src]="'http://localhost:5233' + imageUrl" alt="Review Image"
+          (click)="openImage('http://localhost:5233' + imageUrl)">
+      </div>
+    </div>
+  </div>
+  <ng-template #noReviews>
+    <p class="no-reviews">Hozircha sharhlar yo‘q.</p>
+  </ng-template>
+</div>
+
+  <!-- Modal rasim uchun -->
+  <div class="image-modal" *ngIf="selectedImage" (click)="closeImage()">
+    <div class="modal-content">
+      <img [src]="selectedImage" alt="Full Image">
+      <span class="close-modal material-icons">close</span>
+    </div>
+  </div>
+</div>

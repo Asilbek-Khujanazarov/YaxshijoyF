@@ -1,0 +1,827 @@
+/* Material Icons uchun */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.company-details {
+  padding: 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.back-btn {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+  background: #f1f1f1;
+}
+
+.header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+
+/* Slayder stillari */
+.image-slider {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hands-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: none;
+  pointer-events: none;
+}
+
+.slider-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2e7d32;
+  z-index: -1;
+}
+
+.slider-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  gap: 1px;
+  background-color: transparent;
+  display: flex;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 100%;
+  background-color: rgba(180, 180, 180, 0.8);
+  border-radius: 3px;
+  transition: background-color 1s ease;
+}
+
+.progress-segment.filled {
+  background-color: #ffffff;
+  border-radius: 3px;
+}
+
+.camera-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.camera-icon .material-icons {
+  color: #fff;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.camera-icon input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Styling for the three-dot menu */
+.menu-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.menu-icon:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.menu-icon .material-icons {
+  color: #fff;
+  font-size: 20px;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  min-width: 120px;
+}
+
+.menu-item {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-item:hover {
+  background: #f1f1f1;
+}
+
+.menu-item.delete {
+  color: #ff5555;
+}
+
+.menu-item.delete:hover {
+  background: #ffe6e6;
+}
+
+.no-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  padding: 20px;
+  height: 200px; /* Match the height of the image-slider for consistency */
+  background-color: #2e7d32; /* Revert to the original green background */
+  border-radius: 10px 10px 0 0; /* Match the border-radius of the image-slider */
+}
+
+.no-images .no-image-icon {
+  font-size: 88px; /* Large icon to indicate no images */
+  color: #fff; /* White for contrast against the green background */
+  opacity: 0.8; /* Slightly transparent for a subtle effect */
+}
+
+.no-images p {
+  margin: 0;
+  font-size: 16px; /* Slightly larger for emphasis */
+  max-width: 80%; /* Prevent text from stretching too wide */
+  line-height: 1.5; /* Improve readability */
+}
+
+/* Updated Rating section below image slider */
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  margin-top: -5px; /* Tighten spacing to match the image */
+}
+
+.rating-section .material-icons.star {
+  font-size: 16px; /* Smaller stars to match the image */
+  margin-right: 2px;
+}
+
+.rating-section .material-icons.star.filled {
+  color: #f39c12; /* Yellow for filled stars */
+}
+
+.rating-section .material-icons.star:not(.filled) {
+  color: #ccc; /* Gray for unfilled stars */
+}
+
+.rating-section .rating-text {
+  font-size: 14px;
+  color: #444;
+  font-weight: 500;
+}
+
+.info-details .info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.info-details .material-icons {
+  color: #666;
+  font-size: 18px;
+}
+
+.info-details p, .info-details a {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+}
+
+.info-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-details a:hover {
+  text-decoration: underline;
+}
+
+/* Location & Hours bo‘limi */
+.location-section {
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-top: 60px;
+  width: 30%;
+  height: 90%;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.location-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.location-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.map-container {
+  width: 100%;
+}
+
+.map {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.address {
+  margin-top: 10px;
+}
+
+.address-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.address-text {
+  font-size: 14px;
+  color: #007bff;
+  margin: 5px 0;
+}
+
+.directions-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.directions-btn:hover {
+  background: #f1f1f1;
+}
+
+.hours {
+  width: 100%;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.hours-row .day {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.hours-row .time {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Sharh qoldirish formasi */
+.review-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+
+.review-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-form .rating {
+  display: flex;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.review-form .star {
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.review-form .star.filled {
+  color: #f39c12;
+}
+
+.review-form .star:hover,
+.review-form .star.filled:hover {
+  color: #e67e22;
+}
+
+.review-form .input-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.review-form textarea {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #333;
+  font-size: 14px;
+  resize: none;
+  min-height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.review-form textarea::placeholder {
+  color: #888;
+}
+
+.review-form .input-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-form .file-upload {
+  position: relative;
+  cursor: pointer;
+}
+
+.review-form .file-upload .material-icons {
+  color: #666;
+  font-size: 20px;
+}
+
+.review-form .file-upload input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.review-form .submit-btn {
+  background: #007bff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.review-form .submit-btn:hover {
+  background: #0056b3;
+}
+
+.review-form .submit-btn .material-icons {
+  color: #fff;
+  font-size: 18px;
+}
+
+.review-form .image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px 12px;
+}
+
+.review-form .image-preview span {
+  display: inline-flex;
+  align-items: center;
+  background: #e9ecef;
+  color: #333;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.review-form .image-preview .remove-image {
+  margin-left: 5px;
+  color: #ff5555;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.review-form .image-preview .remove-image:hover {
+  color: #ff3333;
+}
+
+/* Sharhlar bo‘limi */
+.reviews-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reviews-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.reviews-list {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reviews-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reviews-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
+}
+
+.review-card {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.review-card:last-child {
+  margin-bottom: 0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.review-header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-header .avatar {
+  font-size: 32px;
+  color: #666;
+  border-radius: 50%;
+  background: #eee;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-header .user-id {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.review-header .date {
+  font-size: 12px;
+  color: #888;
+  margin-left: 5px;
+}
+
+.review-header .rating {
+  display: flex;
+  gap: 2px;
+}
+
+.review-header .star {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.review-header .star.filled {
+  color: #f39c12;
+}
+
+.review-card p {
+  font-size: 14px;
+  color: #444;
+  margin: 5px 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.review-images {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.review-images img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.no-reviews {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+}
+
+/* Modal dizayni */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.close-modal {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Responsive dizayn */
+@media (max-width: 480px) {
+  .company-details {
+    padding: 10px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .info-details p, .info-details a {
+    font-size: 13px;
+  }
+
+  .image-slider {
+    height: 180px;
+  }
+
+  .slider-image {
+    width: 100%;
+  }
+
+  .progress-bar {
+    height: 6px;
+    gap: 1px;
+    background-color: transparent;
+  }
+
+  .progress-segment {
+    border-radius: 3px;
+    background-color: rgba(180, 180, 180, 0.8);
+  }
+
+  .menu-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .menu-icon .material-icons {
+    font-size: 18px;
+  }
+
+  .menu-dropdown {
+    top: 40px;
+    right: 5px;
+    min-width: 100px;
+  }
+
+  .menu-item {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .camera-icon .material-icons {
+    font-size: 20px;
+    padding: 3px;
+  }
+
+  .no-images {
+    height: 180px; /* Match the responsive height of the image-slider */
+  }
+
+  .no-images .no-image-icon {
+    font-size: 36px; /* Slightly smaller icon for mobile */
+  }
+
+  .no-images p {
+    font-size: 14px; /* Slightly smaller text for mobile */
+    max-width: 90%; /* Adjust for smaller screens */
+  }
+
+  .location-section {
+    width: 100%;
+    position: static;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .location-content {
+    flex-direction: column;
+  }
+
+  .map-container {
+    width: 100%;
+  }
+
+  .hours {
+    width: 100%;
+  }
+
+  .review-form textarea {
+    font-size: 13px;
+  }
+
+  .review-card p {
+    font-size: 13px;
+  }
+
+  .review-images img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .review-header .user-id,
+  .review-header .date {
+    font-size: 12px;
+  }
+
+  .review-header .avatar {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .review-header .star {
+    font-size: 12px;
+  }
+
+  .rating-section .material-icons.star {
+    font-size: 14px; /* Slightly smaller for mobile */
+  }
+
+  .rating-section .rating-text {
+    font-size: 13px;
+  }
+
+  .close-modal {
+    top: -30px;
+    right: -30px;
+    font-size: 24px;
+  }
+}
