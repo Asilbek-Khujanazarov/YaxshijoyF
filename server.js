@@ -2,16 +2,16 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// To‘g‘ri yo‘l: dist/yn/
-const distFolder = path.join(__dirname, 'dist/yn/browser/');
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static(distFolder));
+// Static fayllar
+app.use(express.static(__dirname + '/dist/yn'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(distFolder, 'index.html'));
+// Har qanday route uchun Angular index.html yuboriladi
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname + '/dist/yn/browser/index.html'));
 });
 
-const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
