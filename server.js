@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 
 // To‘g‘ri yo‘l: dist/yn/
-const distFolder = path.join(__dirname, 'dist/yn');
+const distFolder = path.join(__dirname, 'dist/yn/browser/');
 
 app.use(express.static(distFolder));
 
