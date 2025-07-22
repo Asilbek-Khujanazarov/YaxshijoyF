@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node server.js",
+    "build": "node ./node_modules/@angular/cli/bin/ng build --configuration production",
+    "heroku-postbuild": "npm install && npm run build",
+    "postinstall": "npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
