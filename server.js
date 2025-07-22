@@ -4,14 +4,18 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Static fayllar
-app.use(express.static(__dirname + '/dist/yn'));
+// TO‘G‘RI YO‘L: dist/yn/browser
+const distPath = path.join(__dirname, 'dist', 'yn', 'browser');
 
-// Har qanday route uchun Angular index.html yuboriladi
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/yn/browser/index.html'));
+// Static fayllarni serve qilish
+app.use(express.static(distPath));
+
+// Har qanday route uchun index.html yuborish
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
+// Serverni ishga tushurish
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
