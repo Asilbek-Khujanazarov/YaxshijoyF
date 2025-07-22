@@ -185,7 +185,7 @@ export class CompanyService {
 
   getFirstImageUrl(companyId: string): string {
     const images = this.companyImages[companyId] || [];
-    return images.length > 0 ? `http://localhost:5233${images[0].imageUrl}` : '/assets/placeholder-image.jpg';
+    return images.length > 0 ? `https://yaxshijoy-back-016d95ece8ad.herokuapp.com${images[0].imageUrl}` : '/assets/placeholder-image.jpg';
   }
 
   getFilledStars(companyId: string): number {

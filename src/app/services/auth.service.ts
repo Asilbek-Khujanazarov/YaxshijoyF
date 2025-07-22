@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private backendUrl = 'http://localhost:5233'; // Backend URL’ingiz
+  private backendUrl = 'https://yaxshijoy-back-016d95ece8ad.herokuapp.com'; // Backend URL’ingiz
 
   constructor(private http: HttpClient) {}
 
