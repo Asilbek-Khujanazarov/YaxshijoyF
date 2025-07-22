@@ -11,7 +11,7 @@
     <div class="image-slider" *ngIf="images?.length; else noImages">
       <div class="slider-container">
         <div class="slider-image">
-          <img [src]="'https://yaxshijoy-back-016d95ece8ad.herokuapp.com' + images[currentImageIndex].imageUrl" alt="Company Image" />
+          <img [src]="'https://yaxshi-joy.onrender.com' + images[currentImageIndex].imageUrl" alt="Company Image" />
           <div class="hands-overlay"></div>
         </div>
         <div class="slider-background"></div>
@@ -148,8 +148,8 @@
       </div>
       <p>{{ review.comment }}</p>
       <div class="review-images" *ngIf="review.imageUrls?.length">
-        <img *ngFor="let imageUrl of review.imageUrls" [src]="'https://yaxshijoy-back-016d95ece8ad.herokuapp.com' + imageUrl" alt="Review Image"
-          (click)="openImage('https://yaxshijoy-back-016d95ece8ad.herokuapp.com' + imageUrl)">
+        <img *ngFor="let imageUrl of review.imageUrls" [src]="'https://yaxshi-joy.onrender.com' + imageUrl" alt="Review Image"
+          (click)="openImage('https://yaxshi-joy.onrender.com' + imageUrl)">
       </div>
     </div>
   </div>
