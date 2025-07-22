@@ -1,9 +1,8 @@
-<div class="sidebar" [style.backgroundImage]="(selectedCategory || searchQuery) ? 'none' : 'url(' + currentSlide.image + ')'">
+<div class="sidebar"
+  [style.backgroundImage]="(selectedCategory || searchQuery) ? 'none' : 'url(' + currentSlide.image + ')'">
   <!-- Indikatorlar -->
   <div class="indicator" *ngIf="!selectedCategory && !searchQuery">
-    <div *ngFor="let slide of slides; let i = index" 
-         class="indicator-bar" 
-         [ngClass]="{'active': i === slideIndex}">
+    <div *ngFor="let slide of slides; let i = index" class="indicator-bar" [ngClass]="{'active': i === slideIndex}">
     </div>
   </div>
 
@@ -20,9 +19,8 @@
 
   <!-- Kategoriyalar paneli -->
   <div class="categories-panel">
-    <button *ngFor="let category of categories" 
-            [class.selected]="selectedCategory === category"
-            (click)="selectCategory(category)">
+    <button *ngFor="let category of categories" [class.selected]="selectedCategory === category"
+      (click)="selectCategory(category)">
       {{ category }}
     </button>
   </div>
@@ -32,7 +30,8 @@
     <ul class="results-list" *ngIf="searchResults.length > 0; else noResults">
       <li *ngFor="let item of searchResults" class="result-card" (click)="openCompanyDetails(item)">
         <div class="result-content">
-          <div class="result-image" *ngIf="getFirstImageUrl(item.companyMetaData?.id) !== '/assets/placeholder-image.jpg'">
+          <div class="result-image"
+            *ngIf="getFirstImageUrl(item.companyMetaData?.id) !== '/assets/placeholder-image.jpg'">
             <img [src]="getFirstImageUrl(item.companyMetaData?.id)" alt="Company Image">
           </div>
           <div class="result-info">
@@ -40,10 +39,13 @@
               <strong>{{ item.name }}</strong>
             </div>
             <div class="rating-section">
-              <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'filled': i <= getFilledStars(item.companyMetaData?.id)}">star</span>
-              <span class="rating-text">{{ getRating(item.companyMetaData?.id).toFixed(1) }} ({{ getReviewCount(item.companyMetaData?.id) }} ta baho)</span>
+              <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]"
+                [ngClass]="{'filled': i <= getFilledStars(item.companyMetaData?.id)}">star</span>
+              <span class="rating-text">{{ getRating(item.companyMetaData?.id).toFixed(1) }} ({{
+                getReviewCount(item.companyMetaData?.id) }} ta baho)</span>
             </div>
-            <p class="description">{{ item.description | slice:0:80 }}{{ item.description?.length > 80 ? '...' : '' }}</p>
+            <p class="description">{{ item.description | slice:0:80 }}{{ item.description?.length > 80 ? '...' : '' }}
+            </p>
             <div class="result-details">
               <p *ngIf="item.companyMetaData?.hours"><strong></strong> {{ item.companyMetaData.hours || 'N/A' }}</p>
             </div>

@@ -11,7 +11,7 @@
     <div class="image-slider" *ngIf="images?.length; else noImages">
       <div class="slider-container">
         <div class="slider-image">
-          <img [src]="'https://yaxshi-joy.onrender.com' + images[currentImageIndex].imageUrl" alt="Company Image" />
+          <img [src]="images[currentImageIndex].imageUrl" alt="Company Image" />
           <div class="hands-overlay"></div>
         </div>
         <div class="slider-background"></div>
@@ -26,7 +26,7 @@
       <div class="slider-controls">
         <div class="progress-bar">
           <span class="progress-segment" *ngFor="let image of images; let i = index"
-                [ngClass]="{'filled': i <= currentImageIndex}"></span>
+            [ngClass]="{'filled': i <= currentImageIndex}"></span>
         </div>
         <label class="camera-icon">
           <span class="material-icons">photo_camera</span>
@@ -50,11 +50,12 @@
       <!-- Company Name -->
       <div class="info-row">
         <span class="material-icons"></span>
-      <h2 class="company-name">{{ company?.name || 'N/A' }}</h2>
+        <h2 class="company-name">{{ company?.name || 'N/A' }}</h2>
       </div>
       <!-- Rating -->
       <div class="rating-section">
-        <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'filled': i <= getFilledStars()}">star</span>
+        <span class="material-icons star" *ngFor="let i of [1, 2, 3, 4, 5]"
+          [ngClass]="{'filled': i <= getFilledStars()}">star</span>
         <span class="rating-text">{{ companyRating.toFixed(1) }} ({{ reviewCount }} ta baho)</span>
       </div>
       <!-- Category -->
@@ -63,7 +64,7 @@
         <p>{{ company?.companyMetaData?.categories || 'N/A' }}</p>
       </div>
 
-  <br>
+      <br>
       <!-- Description -->
       <div class="info-row" *ngIf="company?.description">
         <span class="material-icons"></span>
@@ -131,32 +132,32 @@
     </form>
   </div>
 
-<div class="reviews-section">
-  <h4>Sharhlar</h4>
-  <div *ngIf="reviews?.length; else noReviews" class="reviews-list">
-    <div *ngFor="let review of reviews" class="review-card">
-      <div class="review-header">
-        <div class="user-info">
-          <span class="material-icons avatar">person</span>
-          <span class="user-id">{{ review.userName | maskEmail }}</span>
-          <span class="date">{{ review.createdAt | date:'MMM d, yyyy' }}</span>
+  <div class="reviews-section">
+    <h4>Sharhlar</h4>
+    <div *ngIf="reviews?.length; else noReviews" class="reviews-list">
+      <div *ngFor="let review of reviews" class="review-card">
+        <div class="review-header">
+          <div class="user-info">
+            <span class="material-icons avatar">person</span>
+            <span class="user-id">{{ review.userName | maskEmail }}</span>
+            <span class="date">{{ review.createdAt | date:'MMM d, yyyy' }}</span>
+          </div>
+          <div class="rating">
+            <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]"
+              [ngClass]="{'filled': star <= review.rating}">★</span>
+          </div>
         </div>
-        <div class="rating">
-          <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]"
-            [ngClass]="{'filled': star <= review.rating}">★</span>
+        <p>{{ review.comment }}</p>
+        <div class="review-images" *ngIf="review.imageUrls?.length">
+          <img *ngFor="let imageUrl of review.imageUrls" [src]="imageUrl" alt="Review Image"
+            (click)="openImage(imageUrl)">
         </div>
-      </div>
-      <p>{{ review.comment }}</p>
-      <div class="review-images" *ngIf="review.imageUrls?.length">
-        <img *ngFor="let imageUrl of review.imageUrls" [src]="'https://yaxshi-joy.onrender.com' + imageUrl" alt="Review Image"
-          (click)="openImage('https://yaxshi-joy.onrender.com' + imageUrl)">
       </div>
     </div>
+    <ng-template #noReviews>
+      <p class="no-reviews">Hozircha sharhlar yo‘q.</p>
+    </ng-template>
   </div>
-  <ng-template #noReviews>
-    <p class="no-reviews">Hozircha sharhlar yo‘q.</p>
-  </ng-template>
-</div>
 
   <!-- Modal rasim uchun -->
   <div class="image-modal" *ngIf="selectedImage" (click)="closeImage()">

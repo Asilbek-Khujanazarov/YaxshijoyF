@@ -12,7 +12,7 @@ export class CompanyService {
   private companyImages: { [key: string]: any[] } = {};
   private reviews: { [key: string]: any[] } = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   fetchDataForResults(searchResults: any[]): Observable<void> {
     const ratingRequests = searchResults.map(item => {
@@ -185,7 +185,10 @@ export class CompanyService {
 
   getFirstImageUrl(companyId: string): string {
     const images = this.companyImages[companyId] || [];
-    return images.length > 0 ? `https://yaxshi-joy.onrender.com${images[0].imageUrl}` : '/assets/placeholder-image.jpg';
+    // Cloudinary URL bo‘lsa, u to‘liq https:// bilan keladi
+    return images.length > 0 && images[0].imageUrl.startsWith('http')
+      ? images[0].imageUrl
+      : '/assets/placeholder-image.jpg';
   }
 
   getFilledStars(companyId: string): number {
