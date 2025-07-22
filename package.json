@@ -5,9 +5,6 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build --configuration=production",
-    "heroku-postbuild": "npm install && npm run build",
-    "postinstall": "npm run build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
